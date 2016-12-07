@@ -1,5 +1,5 @@
 import evoworker_gp as evoworker
-import cloud, time, yaml
+import time, yaml
 
 
 config = yaml.load(open("conf/conf.yaml"))
