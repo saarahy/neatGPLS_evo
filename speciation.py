@@ -168,5 +168,32 @@ def specie_parents_child(parents, offspring, h, version):
                     n_esp+=1
     return offspring
 
+#regresa el grupo de individuos en una especie dada
+def getInd_perSpecie(specie, population):
+    individuals=[]
+    for ind in population:
+        if ind.get_specie()==specie:
+            individuals.append(ind)
+    return individuals
 
+
+#regresa el grupo de individuos en una especie de un individuo dado
+def getInd_perIndividual(individuo, population):
+    #cont=0
+    individuals=[]
+    specie=individuo.get_specie()
+    for ind in population:
+        if ind.get_specie()==specie:
+            #cont+=1
+            individuals.append(ind)
+    return individuals
+
+
+#funcion para contar los individuos de una especie
+def list_species(population):
+    specie2 = list()
+    for ind in population:
+        specie2.append(ind.get_specie())
+    specie_list = np.unique(specie2)
+    return specie_list
 
