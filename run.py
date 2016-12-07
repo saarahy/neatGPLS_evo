@@ -1,4 +1,5 @@
 import evoworker_gp as evoworker
+from neatGPLS import ensure_dir
 import time, yaml
 
 
@@ -28,8 +29,9 @@ num_p=3
 config["n_problem"] = num_p
 config["problem"] = problem
 
-best = open('./Timing/%s/time_%d.txt' % (problem, num_p), 'w')
-
+d = './Timing/%s/time_%d.txt' % (problem, num_p)
+ensure_dir(d)
+best = open(d, 'a')
 for ci in range(17,18):
     print ci
     config["n_corr"]=ci

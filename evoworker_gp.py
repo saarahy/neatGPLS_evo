@@ -210,7 +210,7 @@ def evolve(sample_num, config):
     cont_evalf = config["cont_evalf"]
     SaveMatrix = config["save_matrix"]
     GenMatrix = config["gen_matrix"]
-
+    version=3
     data_(n_corr, n_prob, problem,name_database,toolbox)
 
     begin =time.time()
@@ -227,7 +227,7 @@ def evolve(sample_num, config):
     else:
         pop, log = neatGPLS.neat_GP_LS(pop, toolbox, cxpb, mutpb, ngen, neat_alg, neat_cx, neat_h, neat_pelit,
                                        funcEval.LS_flag, LS_select, cont_evalf, num_salto, SaveMatrix, GenMatrix, pset,
-                                       n_corr, n_prob, params, direccion, problem, testing, version=version,
+                                       n_corr, n_prob, params, direccion, problem, testing=config["TESTING"], version=version,
                                        stats=None, halloffame=None, verbose=True)
 
 

@@ -247,7 +247,7 @@ def neat_GP_LS(population, toolbox, cxpb, mutpb, ngen, neat_alg, neat_cx, neat_h
             num_salto=1
             num_c=ngen+1
             Matrix= np.empty((num_c, num_r,))
-            Matrix_specie = np.empty((num_c, num_r_sp,))
+            Matrix_specie = np.empty((num_c, num_r_sp,), dtype=object)
             vector = np.arange(0, num_c, num_salto)
         else:
             num_c = (cont_evalf/num_salto) + 1
@@ -379,7 +379,7 @@ def neat_GP_LS(population, toolbox, cxpb, mutpb, ngen, neat_alg, neat_cx, neat_h
     if SaveMatrix:
         idx=0
         Matrix_specie[idx,1]=ind_specie(population)
-    #specie_statis.write('\n%s;%s' % (0, ind_specie(population)))
+        #specie_statis.write('\n%s;%s' % (0, ind_specie(population)))
         np.savetxt('./Specie/%s/specist_%d_%d.txt' % (problem, num_p, n_corr), Matrix_specie, delimiter=";", fmt="%s")
     if testing:
         time_file.write('\n%s;%s;%s;%s;%s;%s' % (0, begin,end_t, str(round(end_t - begin, 2)), best_ind.fitness.values[0], best_ind.fitness_test.values[0]))
