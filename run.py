@@ -25,7 +25,7 @@ evoworker.initialize(config)
 
 problem='Housing'
 num_p=3
-config["n_problem"]=num_p
+config["n_problem"] = num_p
 config["problem"] = problem
 
 best = open('./Timing/%s/time_%d.txt' % (problem, num_p), 'w')

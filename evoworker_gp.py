@@ -119,11 +119,11 @@ def evalSymbReg(individual, points, toolbox):
     result = np.sum((vector_x - vector)**2)
     return np.sqrt(result/len(points[0])),
 
-def data_(n_corr,p, toolbox):
-    n_archivot='./data_corridas/Housing/test_%d_%d.txt'%(p,n_corr)
-    n_archivo='./data_corridas/Housing/train_%d_%d.txt'%(p,n_corr)
+def data_(n_corr,p, problem, name_database,toolbox):
+    n_archivot='./data_corridas/%s/test_%d_%d.txt'%(problem,p,n_corr)
+    n_archivo='./data_corridas/%s/train_%d_%d.txt'%(problem,p,n_corr)
     if not (os.path.exists(n_archivo) or os.path.exists(n_archivot)):
-        direccion="./data_corridas/Housing/housing.txt"
+        direccion = "./data_corridas/%s/%s" % (problem, name_database)
         with open(direccion) as spambase:
             spamReader = csv.reader(spambase,  delimiter=' ', skipinitialspace=True)
             num_c = sum(1 for line in open(direccion))
@@ -175,13 +175,13 @@ def data_(n_corr,p, toolbox):
     toolbox.register("evaluate_test", evalSymbReg, points=data_test, toolbox=toolbox)
 
 def evolve(sample_num, config):
-    #random.seed(64)
     toolbox = getToolBox(config)
     start = time.time()
-    problem=config["PROBLEM"]
+    problem=config["problem"]
     direccion=config["DIRECCION"]
     n_corr=config["n_corr"]
     n_prob=config["n_problem"]
+    name_database=config["name_database"]
 
 
 
@@ -190,7 +190,7 @@ def evolve(sample_num, config):
 
     #evospace_sample = server.get_sample(config["SAMPLE_SIZE"])
     evospace_sample = server.getSample(config["SAMPLE_SIZE"])
-    #print 'hey'
+
     #evospace_specie= server.getSample_specie(config["set_specie"])
 
     pop = [creator.Individual(neat_gp.PrimitiveTree.from_string(cs['chromosome'], pset)) for cs in evospace_sample['sample']]
@@ -211,7 +211,7 @@ def evolve(sample_num, config):
     SaveMatrix = config["save_matrix"]
     GenMatrix = config["gen_matrix"]
 
-    data_(n_corr, n_prob, toolbox)
+    data_(n_corr, n_prob, problem,name_database,toolbox)
 
     begin =time.time()
     print "inicio del proceso"
@@ -227,7 +227,9 @@ def evolve(sample_num, config):
     else:
         pop, log = neatGPLS.neat_GP_LS(pop, toolbox, cxpb, mutpb, ngen, neat_alg, neat_cx, neat_h, neat_pelit,
                                        funcEval.LS_flag, LS_select, cont_evalf, num_salto, SaveMatrix, GenMatrix, pset,
-                                       n_corr, n_prob, params, direccion, problem, stats=None, halloffame=None, verbose=True)
+                                       n_corr, n_prob, params, direccion, problem, testing, version=version,
+                                       stats=None, halloffame=None, verbose=True)
+
 
     putback =  time.time()
     #

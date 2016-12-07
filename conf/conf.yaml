@@ -1,26 +1,39 @@
-CXPB: 0.9
-DIRECCION: ./data_corridas/Housing/train_%d_%d.txt
-LS_FLAG: false
-LS_SELECT: 9
-MAX_SAMPLES: 1
-MUTATION_FLIP_PB: 0.05
-MUTPB: 0.1
-PARAMS: [best_of_each_specie, 2, 'yes']
-POPULATION_SIZE: 100
-PROBLEM: Housing
-SAMPLE_SIZE: 100
 SERVER: https://stormy-waters-38139.herokuapp.com/
+DIRECCION: ./data_corridas/%s/train_%d_%d.txt
+
+problem: Housing
+name_database: housing.txt
+
+TESTING: True
+CXPB: 0.9
+MUTPB: 0.1
+
+MAX_SAMPLES: 1
+
+SAMPLE_SIZE: 100
+POPULATION_SIZE: 100
+
 TOURNAMENT_SIZE: 2
 WORKER_GENERATIONS: 30
+
 cont_evalf: 100000
-gen_matrix: true
+gen_matrix: True
+save_matrix: True
+num_salto: 500
 n_corr: 17
 n_problem: 3
-neat_alg: false
-neat_cx: false
+
+
+LS_FLAG: False
+LS_SELECT: 9
+
+
+neat_alg: False
+neat_cx: False
+PARAMS: [best_of_each_specie, 2, 'yes']
 neat_h: 0.15
 neat_pelit: 0.5
-num_salto: 500
-problem: Housing
-save_matrix: true
+
+
+
 set_specie: 3
