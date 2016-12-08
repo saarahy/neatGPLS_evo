@@ -21,7 +21,7 @@ params = [(i, config) for i in range(1)]
 #     for a in r:
 #         print a
 
-evoworker.initialize(config)
+#evoworker.initialize(config)
 #a,b=evoworker.speciation(config)
 
 problem='Housing'
