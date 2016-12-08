@@ -14,7 +14,7 @@ WORKER_GENERATIONS: 100
 cont_evalf: 100000
 gen_matrix: true
 n_corr: 18
-n_problem: 101
+n_problem: 102
 name_database: housing.txt
 neat_alg: false
 neat_cx: false

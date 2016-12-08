@@ -25,7 +25,7 @@ params = [(i, config) for i in range(1)]
 #a,b=evoworker.speciation(config)
 
 problem='Housing'
-num_p=101
+num_p=102
 config["n_problem"] = num_p
 config["problem"] = problem
 
