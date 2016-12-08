@@ -25,14 +25,14 @@ params = [(i, config) for i in range(1)]
 #a,b=evoworker.speciation(config)
 
 problem='Housing'
-num_p=102
+num_p=101
 config["n_problem"] = num_p
 config["problem"] = problem
 
 d = './Timing/%s/time_%d.txt' % (problem, num_p)
 ensure_dir(d)
 best = open(d, 'a')
-for ci in range(1,31):
+for ci in range(29,31):
     print ci
     config["n_corr"]=ci
     config["set_specie"] = 1
