@@ -325,6 +325,8 @@ def mutUniform(individual, expr, pset):
     index = random.randrange(len(individual))
     slice_ = individual.searchSubtree(index)
     type_ = individual[index].ret
+    if type_ is float:
+        type_=None
     xp = expr(pset=pset, type_=type_)
     if funcEval.LS_flag:
             a=slice_.start
