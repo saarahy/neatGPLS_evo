@@ -10,11 +10,11 @@ SAMPLE_SIZE: 100
 SERVER: https://stormy-waters-38139.herokuapp.com/
 TESTING: true
 TOURNAMENT_SIZE: 2
-WORKER_GENERATIONS: 30
+WORKER_GENERATIONS: 100
 cont_evalf: 100000
 gen_matrix: true
-n_corr: 17
-n_problem: 3
+n_corr: 18
+n_problem: 101
 name_database: housing.txt
 neat_alg: false
 neat_cx: false

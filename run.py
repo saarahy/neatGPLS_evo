@@ -21,21 +21,21 @@ params = [(i, config) for i in range(1)]
 #     for a in r:
 #         print a
 
-#evoworker.initialize(config)
+evoworker.initialize(config)
 #a,b=evoworker.speciation(config)
 
 problem='Housing'
-num_p=3
+num_p=101
 config["n_problem"] = num_p
 config["problem"] = problem
 
 d = './Timing/%s/time_%d.txt' % (problem, num_p)
 ensure_dir(d)
 best = open(d, 'a')
-for ci in range(17,18):
+for ci in range(1,31):
     print ci
     config["n_corr"]=ci
-    config["set_specie"] = 3
+    config["set_specie"] = 1
 
     with open("conf/conf.yaml","w") as f:
         yaml.dump(config, f)
